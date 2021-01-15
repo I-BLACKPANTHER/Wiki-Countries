@@ -1,0 +1,49 @@
+<div class="countryDetail">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="flag" class="image_container img-responsive" />
+        </div>  
+        <div class="col-md-8">
+            <div class="countryInfor">
+                <div class="mainDetails">
+                  <div class="primaryCountryDetails">
+                    <h1>{{ name }} - {{ nativeName }} </h1>
+                    <p> Capital: {{ capital }}</p>
+                    <p>Population: {{ population | number }}</p>
+                    <p>Region: {{ region }}</p>
+                    <p>Sub region: {{ subregion }}</p>
+                    
+                  </div>
+                </div>
+                <div class="secondaryCountryDetails">
+                  <div class="currency">
+                    Currencies :
+                    <span *ngFor="let myCurrent of resultCurrency">
+                      {{ myCurrent }},
+                    </span>
+                  </div>
+                  <div class="langauges">
+                    Languages:
+                    <span *ngFor="let lang of resultLang"> {{ lang }}, </span>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="borderDetails">
+        <h4>Border</h4>
+        <div class="borders">
+          <span
+            class="borderflag"
+            *ngFor="let borderCountry of borderingCountries"
+          >
+            <img src="{{borderCountry.flag}}" (click)="changeCountry(borderCountry.name)"  [routerLink]="['/countries', borderCountry.name]">
+            <span>{{borderCountry.name}}</span>
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
