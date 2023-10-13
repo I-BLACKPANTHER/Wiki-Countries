@@ -1,33 +1,49 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CountriesComponent } from './countries/countries.component';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
-import { CountryDetailComponent } from './country-detail/country-detail.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import { CountriesComponent } from './countries/countries.component';
+import { CountryDetailsComponent } from './country-details/country-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CountriesService } from './countries.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatPaginatorIntl,
+  MatPaginatorModule,
+} from '@angular/material/paginator';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomPaginatorIntl } from './custom-paginator-intl';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountriesComponent,
     NavHeaderComponent,
-    CountryDetailComponent
+    CountriesComponent,
+    CountryDetailsComponent,
+    PageNotFoundComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    CountriesService,
+    LoginService,
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img
+        [src]="countryDetails?.flags.png"
+        class="card-img-top flag-img"
+        alt="..."
+      />
+    </div>
+    <div class="col">
+      <h1>{{ countryDetails?.name.common }}</h1>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Official Name: {{ countryDetails?.name.official }}</p>
+          <p>Population: {{ countryDetails?.population }}</p>
+          <p>Region: {{ countryDetails?.region }}</p>
+          <p>Sub-Region: {{ countryDetails?.subregion }}</p>
+          <p>Capital: {{ countryDetails?.capital }}</p>
+        </div>
+        <div class="col-md-6">
+          <p>Area: {{ countryDetails?.area }}</p>
+          <p>TimeZones: {{ countryDetails?.timezones[0] }}</p>
+          <p>Continents: {{ countryDetails?.continents[0] }}</p>
+        </div>
+      </div>
+      <div class="brcountries">
+        Border Countries:
+        <button
+          type="button"
+          *ngFor="let countries of borderCountries"
+          class="btn btn-outline-secondary btn-sm"
+        >
+          {{ countries }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

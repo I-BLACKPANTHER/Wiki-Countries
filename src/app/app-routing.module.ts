@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { CountriesComponent } from './countries/countries.component';
-import { CountryDetailComponent } from './country-detail/country-detail.component';
-
-
+import { CountryDetailsComponent } from './country-details/country-details.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: "countries", component: CountriesComponent },
-  { path: "countries/:name", component: CountryDetailComponent },
-  { path: "", redirectTo: "countries", pathMatch: "full" }
+  { path: 'home', component: HomeComponent },
+  { path: 'countries', component: CountriesComponent },
+  { path: 'countries/:name', component: CountryDetailsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

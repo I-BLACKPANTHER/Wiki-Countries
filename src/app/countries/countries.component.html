@@ -1,62 +1,59 @@
-<div class="wrapper">
-  <form #form="ngForm" aria-label="search area for countries or continents">
-    <div class="sec_header">
-      <div class="side_dock">
-        <h3>Custom Name, Currency and Region Filters</h3>
-      </div>
-      <div class="search_filter">
+<div class="container">
+  <div class="row search">
+    <div class="col-md-4">
+      <div class="input-group mb-3">
         <input
-          type="search"
-          name="searchHere"
-          [(ngModel)]="countryFilter"
-          aria-label="search for a country here"
-          placeholder="Search for a country..."
+          type="text"
+          class="form-control"
+          [(ngModel)]="filterText"
+          placeholder="Enter a country name"
+          (input)="filterCountries()"
+          aria-label="Enter a country name"
         />
-        <input
-          type="search"
-          name="searchHere"
-          [(ngModel)]="countryCurFilter"
-          aria-label="search for a Curency here"
-          placeholder="Search for a Curency..."
-        />
-        <select
-          class="listContinents"
-          (change)="selectByContinent($event)"
-          aria-label="filter country by continents"
-          name="continents"
-          placeholder="Filter by region"
-        >
-          <option value="All">Filter by region</option>
-          <option
-            *ngFor="let continent of continentList"
-            [value]="continent"
-            [selected]="continent.selected == true"
-          >
-            {{ continent }}
-          </option>
-        </select>
       </div>
     </div>
-  </form>
-
-  <div class="container">
-    <div class="row">
-      <div
-        class="main countrisList col-md-3"
-        *ngFor="let country of fcountries"
+    <div class="col-md-4 order">
+      <select
+        class="form-select"
+        [(ngModel)]="selectedRegion"
+        (change)="filterCountries()"
       >
-        <img
-          [src]="country.flag"
-          alt="flag of 'country.flag'"
-          [routerLink]="['/countries', country.name]"
-        />
-        <div class="details">
-          <h3>{{ country.name }}</h3>
-          <h4>
-            Region: <span>{{ country.region }}</span>
-          </h4>
-        </div>
+        <option value="">All Regions</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">Americas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="main countrisList col-md-3"
+      *ngFor="
+        let country of filteredCountries
+          | slice : pageIndex * pageSize : (pageIndex + 1) * pageSize
+      "
+    >
+      <img
+        [src]="country.flags.png"
+        [routerLink]="['/countries', country.name.common]"
+        class="flag-img"
+        alt="..."
+      />
+      <div class="details">
+        <h3 class="name">{{ country.name.common }}</h3>
+        <p class="no-margin">Population: {{ country.population }}</p>
+        <p class="no-margin">Region: {{ country.region }}</p>
+        <p class="capital">Capital: {{ country.capital }}</p>
       </div>
     </div>
   </div>
 </div>
+<mat-paginator
+  [length]="filteredCountries.length"
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+  (page)="handlePage($event)"
+>
+</mat-paginator>

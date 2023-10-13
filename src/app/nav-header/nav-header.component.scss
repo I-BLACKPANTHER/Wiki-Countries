@@ -1,0 +1,27 @@
+.navbar {
+    background-color: white;
+}
+
+
+
+/* Add custom CSS to style the button */
+/* Add custom CSS to style the button */
+.navbar .btn-primary {
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 2px solid navy; /* Navy blue border */
+    background-color: navy; /* Navy blue background */
+    border-radius: 25px; /* Rounded corners, adjust the value to change the curve */
+    color: #fff; /* Button text color */
+    transition: all 0.3s; /* Smooth transition effect */
+}
+
+/* Change button color and border on hover */
+.navbar .btn-primary:hover {
+    background-color: #001F3F; /* Darker navy blue background on hover */
+    border-color: #001F3F; /* Darker navy blue border on hover */
+}
+
+
+
+
+

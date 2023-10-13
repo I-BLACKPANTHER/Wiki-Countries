@@ -1,0 +1,46 @@
+.no-margin{
+    margin: 0px;
+}
+
+.container {
+    padding-top: 50px;
+}
+.search {
+    padding-bottom: 50px;
+}
+.order {
+    justify-content:flex-end;
+}
+
+.flag-img {
+    height: 150px !important;
+    width: 250px !important;
+    border-radius: 5px 5px 0px 0px !important;
+  }
+
+.main {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    margin-right: 70px;
+    padding: 0px;
+    background-color: #2b3743;
+    border-radius: 5px !important;
+    width: 250px; 
+    height: 300px
+}
+
+.details {
+    padding-left: 20px;
+    justify-items: center;
+    font-size: 14px;
+}
+
+.name {
+    font-weight: bold !important;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+.capital {
+    padding-bottom: 30px !important;
+}
